@@ -8,7 +8,7 @@ skin/adminhtml/base/default/deals						skin/adminhtml/base/default/deals
 
 app/design/frontend/base/default/template/deals			app/design/frontend/base/default/template/deals
 app/design/frontend/base/default/layout/dailydeals.xml	app/design/frontend/base/default/layout/dailydeals.xml
-
+skin/frontend/base/default/deals						skin/frontend/base/default/deals
 
 app/locale/en_US/Webinse_DailyDeals.csv					app/locale/en_US/Webinse_DailyDeals.csv
 
