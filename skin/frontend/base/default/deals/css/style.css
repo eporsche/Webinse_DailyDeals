@@ -1,0 +1,114 @@
+/* DayliDeals CountDown */
+.guest-select {width:305px !important;}
+.deal-stat{
+    width: 350px;
+    float:left;
+    margin: 10px 0;
+}
+.deals-countdown{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.deals-countdown-mini-grid{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin: auto;
+  /*  margin-bottom: 15px;*/
+   /* margin-left: 5px;*/
+    /*margin: 4% ;*/
+   /* position: absolute;
+    bottom: 95px;
+    min-height: 30px;
+    /* height: 30px; */
+    width: 100%;
+}
+.deals-countdown-mini-list{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    /*margin-bottom: 15px;
+    margin-left: -62px;*/
+}
+
+.countdownHolder .digit{background-image: none;box-shadow: none;}
+.product-view .countdownHolder,
+.products-list .countdownHolder,
+.dailydeals-index-index .countdownHolder{width: 335px;font-size: 30px;}
+.products-list .countdownHolder{float:left;}
+.product-view .countdownHolder .countDiv:before,
+.product-view .countdownHolder .countDiv:after,
+.dailydeals-index-index .countdownHolder .countDiv:before,
+.dailydeals-index-index .countdownHolder .countDiv:after{box-shadow: none;}
+.deals-side-bar .countdownHolder{width: 180px;font-size: 16px;}
+.deals-side-bar .countdownHolder .countDiv{width: 10px;}
+.products-grid .countDiv{display:inline-block; width:10px; height:1.5em; position:relative;}
+.products-grid .digit{width:0.77em; }
+.products-grid .position{ height: 1.3em; width: 0.77em; }
+.products-grid .countdownHolder{margin-left: 0px; width:137px; font: 16px 'Open Sans Condensed',sans-serif; /*size for countdown*/ }
+.products-grid .countdownHolder .countDiv:before,
+.products-grid .countdownHolder .countDiv:after,
+.deals-side-bar .countdownHolder .countDiv:before,
+.deals-side-bar .countdownHolder .countDiv:after{margin-left: -1px;box-shadow: none;width: 3px;height: 3px;}
+.deals-side-bar .special-price .price-label,
+.deals-countdown{margin-bottom: 20px;}
+.deals-countdown .col-1,
+.deals-countdown .col-2,
+.deals-countdown .col-3{width: 27%;padding: 0 10px;text-align: center;border: 1px solid #000;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px; margin: 0 3%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;box-sizing: border-box;float:left;}
+.deals-countdown .deal-title,
+.deals-countdown .deal-value{/*font-size: 15px;*/font-weight: bold;}
+/*.deals-countdown .deal-value{font-size: 20px;}*/
+
+.dailydeals-index-index .price-box{float: none;/* position: absolute; bottom: 127px;height: 48px;*/}
+.font-bold {
+    font-weight: bold;
+}
+.ended {
+    background-color: #FFCC66;
+}
+.suspended {
+    background-color: #ff8579;
+}
+.pending {
+    background-color: #66CCFF;
+}
+.running {
+    background-color: #66FFCC;
+}
+.disabled_deal {
+    background-color: #ff0006;
+}
+div.deals-countdown div {
+    z-index: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .deal-stat {
+        width:300px;
+    }
+
+    .deal-stat hr {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .deals-countdown .col-1,.deals-countdown .col-2,.deals-countdown .col-3 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .deals-countdown .col-1,.deals-countdown .col-2,.deals-countdown .col-3 {
+        margin: 0 3px;
+    }
+}
+
+.horizontal-items li{display: inline-block;width: 200px;margin: 10px 0 10px 20px!important;}
+.horizontal-items li:first-child{margin-left: 0 !important;}
+.horizontal-items .product-name{height: 60px}
+#widget-price .deals-countdown-mini-grid{display: none;}
+.deal-qty{margin-bottom: 8px; font-size: 13px}
+
+.deals-widget #deals-countdown-mini-list{display: none;}
