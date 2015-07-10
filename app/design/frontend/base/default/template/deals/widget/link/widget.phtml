@@ -1,0 +1,109 @@
+<?php
+/**
+ * @var $_items Webinse_DailyDeals_Block_Product_List
+ */
+$_items = $this->getProductsForBar();
+if ($_items->getItems()) :
+    $dailyDealHelper = $this->helper('dailydeals');
+    ?>
+    <script>
+        document.observe('dom:loaded', function () {
+            var selector_main = $$('.col-main .deals-side-bar');
+            var selector_footer = $$('.footer .deals-side-bar');
+            var selector_before_footer_container = $$('.footer-before-container .deals-side-bar');
+            var selector_header = $$('.top-container .deals-side-bar');
+            if ((selector_main.length > 0) || (selector_footer.length > 0) || (selector_header.length > 0) || (selector_before_footer_container.length > 0)) {
+                $('deals-side-bar').addClassName('horizontal-items');
+            }
+        })
+    </script>
+    <div style="border: <?php echo $this->getData('border_size') . 'px ' . $this->getData('border_style') . ' ' . $this->getData('border_color') ?>"
+        class="block block-list deals-widget">
+        <div class="block-title" id="deals-sidebar-title">
+            <strong><span><a href="<?php echo $this->getUrl('dailydeals')?>"><?php echo Mage::helper('dailydeals')->getWidgetTitle(); ?></a> </span></strong>
+        </div>
+        <div class="block-content">
+            <ol class="mini-products-list deals-side-bar" id="deals-side-bar">
+                <?php foreach ($_items as $_item): ?>
+                    <?php if (Mage::helper('dailydeals')->isDealEnabled($_item)): ?>
+                        <?php $endDealTime = strtotime($_item->getDealEndTime()); ?>
+                        <li class="item">
+                            <div class="product">
+
+                                <a href="<?php echo $_item->getProductUrl() ?>"
+                                   title="<?php echo $this->escapeHtml($_item->getName()) ?>"><span class="product-image"><img
+                                        src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>"
+                                        width="50" height="50"
+                                        alt="<?php echo $this->escapeHtml($_item->getName()) ?>"/></span></a>
+
+                                <div class="product-details">
+                                    <p class="product-name"><a
+                                            href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a>
+                                    </p>
+
+                                    <div id="widget-price">
+                                        <?php echo $this->getPriceHtml($_item, true) ?>
+                                    </div>
+                                    <?php if ($_item->getDealQty()): ?>
+                                        <p class="special-price deal-qty">
+                                            <span class="price-label"><?php echo $this->__('Deal Qty: '); ?></span>
+                                            <span class="price"><?php echo $_item->getDealQty(); ?></span>
+                                        </p>
+                                    <?php endif; ?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>"
+                                           class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                                    <?php endif; ?>
+                                    <?php if ($_item->isSaleable()): ?>
+                                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>"
+                                                class="button btn-cart"
+                                                onclick="setLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_item) ?>', true)">
+                                            <span><span><?php echo $this->__('Add to Cart') ?></span></span>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+<!--                                <div style="margin-top: 20px; margin-bottom: 5px;" class="countdown---><?php ///*echo $parentBlockName . '-' . $_item->getId(); */?><!--">-->
+                                <div style="margin-top: 20px; margin-bottom: 5px;" class="countdown-">
+                                    <script type="application/javascript">
+                                        var CountdownImageFolder = "<?php echo $this->getSkinUrl('images/deals/images/')?>";
+                                        var myCountdown1 = new Countdown({
+                                            time: <?php echo $endDealTime - strtotime(Mage::helper('dailydeals')->getCurrentTime());?>, // 86400 seconds = 1 day
+                                            width: <?php echo $dailyDealHelper->getDealsConfig('deals_widget/width_widget'); ?>,
+                                            height: <?php echo $dailyDealHelper->getDealsConfig('deals_widget/height_widget'); ?>,
+                                            rangeHi: "day",
+                                            numbers: {
+                                                font: "Arial",
+                                                color: "",
+                                                bkgd: "<?php echo $dailyDealHelper->getDealsConfig('deals_widget/widget_countdown_color'); ?>",
+                                                rounded: 0.25
+                                            },
+                                            hideLine: <?php echo '"'. $dailyDealHelper->getDealsConfig('deals_widget/hide_line_on_countdown_widget').'"'; ?>,
+                                            style: "boring",
+                                            labelText	: {
+                                                ms    	: "MS",
+                                                second : <?php echo '"'.$dailyDealHelper->getDealsConfig('dailydeals_group/general_seconds').'"' ?>,
+                                                minute : <?php echo '"'.$dailyDealHelper->getDealsConfig('dailydeals_group/general_minutes').'"' ?>,
+                                                hour  	: <?php echo '"'.$dailyDealHelper->getDealsConfig('dailydeals_group/general_hours').'"' ?>,
+                                                day   	: <?php echo '"'.$dailyDealHelper->getDealsConfig('dailydeals_group/general_days').'"' ?>,
+                                                month  : "MONTHS",
+                                                year  	: "YEARS"	// <- no comma on last item!
+                                            }// <- no comma on last item!
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+        <br/>
+        <div class='links'>
+            <ul>
+                <li class="first">
+                    <a href="<?php echo $this->getUrl('dailydeals') ?>"><?php echo $this->__('All deals product') ?></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

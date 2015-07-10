@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!--Here we define our admin menu-->
+    <menu>
+        <webinse>
+            <title>Webinse</title>
+            <sort_order>80</sort_order>
+            <children>
+                <deals>
+                    <title>Daily Deal Products</title>
+                    <action>adminhtml/deals/list</action>
+                </deals>
+                <deals_category>
+                    <title>Daily Deal Categories</title>
+                    <action>adminhtml/deals/categorygrid</action>
+                </deals_category>
+            </children>
+        </webinse>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dailydeals>
+                                        <title>Webinse DailyDeals</title>
+                                    </dailydeals>
+                                    <website>
+                                        <title>Webinse Website</title>
+                                    </website>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <webinse translate="title" module="dailydeals">
+                        <title>Webinse DailyDeals</title>
+                        <sort_order>9999</sort_order>
+                        <children>
+                            <deals translate="title">
+                                <title>Deals</title>
+                                <sort_order>10</sort_order>
+                            </deals>
+                            <deals_category>
+                                <title>Deals Category</title>
+                                <sort_order>20</sort_order>
+                            </deals_category>
+                        </children>
+                    </webinse>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <dd_part>
+        <reference name="head">
+            <action method="addJs"><script>dailydeals/moment-with-locales.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="deals.date.validator" template="deals/validate.phtml" />
+        </reference>
+    </dd_part>
+    <adminhtml_deals_list>
+        <reference name="head">
+            <action method="addCss">
+                <file>deals/css/style.css</file>
+            </action>
+        </reference>
+        <reference name="content">
+            <!--In the content we add our grid container-->
+            <block type="dailydeals/adminhtml_deals" name="deals.grid.container"/>
+        </reference>
+    </adminhtml_deals_list>
+
+    <!--Category Deal-->
+
+    <adminhtml_deals_categorygrid>
+        <reference name="head">
+            <action method="addCss">
+                <file>deals/css/style.css</file>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="dailydeals/adminhtml_category" name="deals.category.grid.container"/>
+        </reference>
+    </adminhtml_deals_categorygrid>
+    <!--For Ajax-->
+    <adminhtml_deals_gridcategory>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="dailydeals/adminhtml_category_grid" name="deals.category.grid"/>
+        </block>
+    </adminhtml_deals_gridcategory>
+    <!--For Ajax-->
+    <adminhtml_deals_categories>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="dailydeals/adminhtml_category_categories" name="deals.category"/>
+        </block>
+    </adminhtml_deals_categories>
+    <adminhtml_deals_newcategory>
+        <reference name="head">
+            <action method="addCss">
+                <file>deals/css/style.css</file>
+            </action>
+        </reference>
+        <reference name="content">
+            <!--In the content we add our grid container-->
+            <block type="dailydeals/adminhtml_category_categories" name="deals.category.new.container"/>
+        </reference>
+    </adminhtml_deals_newcategory>
+    <!---->
+
+    <adminhtml_deals_new>
+        <update handle="dd_part"/>
+        <reference name="content">
+            <!--In the content we add our grid container-->
+            <block type="dailydeals/adminhtml_deals_products" name="deals.new.container"/>
+        </reference>
+    </adminhtml_deals_new>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs">
+                <file>jscolor/jscolor.js</file>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+    <!--For Ajax-->
+    <adminhtml_deals_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="dailydeals/adminhtml_deals_grid" name="deals.grid"/>
+        </block>
+    </adminhtml_deals_grid>
+    <!--For Ajax-->
+    <adminhtml_deals_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="dailydeals/adminhtml_deals_products" name="deals.products"/>
+        </block>
+    </adminhtml_deals_products>
+    <adminhtml_catalog_product_edit>
+        <update handle="dd_part"/>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>daily_deals</name>
+                <block>dailydeals/adminhtml_catalog_product_tab</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+    <adminhtml_deals_edit>
+        <update handle="dd_part"/>
+    </adminhtml_deals_edit>
+    <adminhtml_widget_instance_edit>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>deals/js/widget.js</name>
+            </action>
+            <action method="addJs">
+                <script>jscolor/jscolor.js</script>
+            </action>
+            <action method="addCss">
+                <file>deals/css/widget.css</file>
+            </action>
+        </reference>
+    </adminhtml_widget_instance_edit>
+</layout>

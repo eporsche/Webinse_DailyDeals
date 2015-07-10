@@ -1,0 +1,133 @@
+<?php if ($this->getProduct()): ?>
+
+    <?php
+    $product = $this->getProduct();
+    $helper = $this->helper('dailydeals');
+    $count_col = 0;
+    ?>
+    <?php if ($helper->getDealsConfig('deals_product_page/product_page_countdown_select') && $helper->isDealEnabled($product)): ?>
+        <?php
+        $dealColor = $helper->getDealsConfig('deals_product_page/product_page_countdown_color');
+        ?>
+        <div class="deals-countdown">
+            <script type="text/javascript">
+                CountdownImageFolder = "<?php echo $this->getSkinUrl('images/deals/images/')?>";
+                //(document.body.clientWidth <= 500) ? width = 250 : width = 345;
+                var myCountdown1 = new Countdown({
+                    time: <?php echo strtotime($product->getDealEndTime()) - strtotime(Mage::helper('dailydeals')->getCurrentTime());?>, // 86400 seconds = 1 day
+                    second: 0,
+                    width: <?php echo $helper->getDealsConfig('deals_product_page/width_product_page_countdown') ?>,
+                    height: <?php echo $helper->getDealsConfig('deals_product_page/height_product_page_countdown') ?>,
+                    rangeHi: "day",
+                    numbers: {
+                        font: "Arial",
+                        color: "",
+                        bkgd: "<?php echo $dealColor ?>",
+                        rounded: 0.25
+                    },
+                    hideLine: <?php echo $helper->getDealsConfig('deals_product_page/hide_line_on_countdown_product_page_countdown'); ?>,
+                    style: "boring",	// <- no comma on last item!
+                    labelText	: {
+                        ms    	: "MS",
+                        second : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_seconds').'"' ?>,
+                        minute : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_minutes').'"' ?>,
+                        hour  	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_hours').'"' ?>,
+                        day   	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_days').'"' ?>,
+                        month  : "MONTHS",
+                        year  	: "YEARS"	// <- no comma on last item!
+                    },
+                    labels	:	{
+                        font  	: "Arial",
+                        color 	: <?php echo '"#'.$helper->getDealsConfig('deals_product_page/product_page_countdown_label_color').'"'; ?>,
+                        offset : 0, // Number of pixels to push the labels down away from numbers.
+                        textScale 	: 0.7, // Percentage of size
+                        weight	: "normal"	// < - no comma on last item!
+                    }
+                });
+            </script>
+            <?php
+            echo Mage::log("cron timezone: " . date_default_timezone_get()); ?>
+
+	    <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_deals_information')): ?>
+            <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_save_label')){$count_col++;}?>
+            <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_items_bought_label')){$count_col++;}?>
+            <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_items_left_label')){$count_col++;}?>
+            <div class="col3-set deal-stat" style="width:<?php echo $helper->getDealsConfig('deals_product_page/width_product_page_countdown') ?>px">
+                <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_save_label')):?>
+                    <div class="<?php if ($count_col == 1):?><?php echo 'deals_col1';?>
+                        <?php elseif($count_col == 2):?><?php echo 'deals_col2';?>
+                         <?php elseif($count_col == 3): ?><?php echo 'col-1'?>
+                         <?php endif;?>"
+                         style="border-color: #<?php echo $dealColor; ?>; ">
+                        <span class="deal-title"><?php echo $helper->getDealsConfig('dailydeals_group/save_label') ?></span>
+                        <hr/>
+                        <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/you_save') == 'money'): ?>
+                            <span class="deal-value"
+                                  style="color: #<?php echo $dealColor; ?>"><?php echo '<span class="price" style="/*font-size: 17px;*/">';?>
+                                <?php if($product->getPrice() == $product->getFinalPrice()) :?>
+                                    <?php echo Mage::helper('core')->currency(($product->getPrice() - $product->getDealPrice()), true, false); ?>
+                                <?php else: ?> <!--if set price rule and FinalPrice < DealPrice-->
+                                    <?php echo Mage::helper('core')->currency(($product->getPrice() - $product->getFinalPrice()), true, false); ?>
+                                <?php endif; ?>
+                                </span> </span>
+                        <?php else: ?>
+                            <?php if($product->getPrice() == $product->getFinalPrice()) :?>
+                                <span class="deal-value"
+                                style="color: #<?php echo $dealColor; ?>"><?php echo (100 - round(($product->getDealPrice() / ($product->getPrice() / 100)), 2)); ?>% </span>
+                            <?php else: ?> <!--if set price rule and FinalPrice < DealPrice-->
+                                <span class="deal-value"
+                                style="color: #<?php echo $dealColor; ?>"><?php echo (100 - round(($product->getFinalPrice() / ($product->getPrice() / 100)), 2)); ?>% </span>
+                        <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif;?>
+                <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_items_bought_label')):?>
+                    <div class="<?php if ($count_col == 1):?><?php echo 'deals_col1';?>
+                        <?php elseif($count_col == 2):?><?php echo 'deals_col2';?>
+                         <?php elseif($count_col == 3): ?><?php echo 'col-2'?>
+                         <?php endif;?>"
+                         style="border-color: #<?php echo $dealColor; ?>;">
+                        <span class="deal-title"><?php echo $helper->getDealsConfig('dailydeals_group/items_bought_label') ?></span>
+                        <hr/>
+                            <span class="deal-value"
+                                  style="color: #<?php echo $dealColor; ?>"> <?php if (!$product->getDealBought()) {
+                                    echo '0';
+                                } else {
+                                    echo $product->getDealBought();
+                                } ?></span>
+                    </div>
+                <?php endif;?>
+                <?php if (Mage::getStoreConfig('dailydeals/dailydeals_group/show_items_left_label')):?>
+                    <div class="<?php if ($count_col == 1):?><?php echo 'deals_col1';?>
+                        <?php elseif($count_col == 2):?><?php echo 'deals_col2';?>
+                         <?php elseif($count_col == 3): ?><?php echo 'col-3'?>
+                         <?php endif;?>"
+                         style="border-color: #<?php echo $dealColor; ?>; ">
+                        <span class="deal-title"><?php echo $helper->getDealsConfig('dailydeals_group/items_Left_label') ?></span>
+                        <hr/>
+                            <span class="deal-value"
+                                  style="color: #<?php echo $dealColor; ?>"> <?php echo $product->getDealQty(); ?></span>
+                    </div>
+                <?php endif;?>
+            </div>
+            <script>
+                document.observe("dom:loaded", function() {
+                    var width = <?php echo Mage::getStoreConfig('dailydeals/dailydeals_group/width_product_page_countdown') ?>;
+                    var size = Math.floor(width/20);
+                    $$('.deal-title').each(function(item){
+                        item.setStyle({fontSize: size + 'px'});
+                    });
+                    $$('.deal-value').each(function(item){
+                        item.setStyle({fontSize: size + 'px'});
+                    });
+                });
+            </script>
+	    <?php endif; ?>
+        </div>
+    <?php endif; ?>
+    <div class="clearfix"></div>
+<?php endif; ?>
+
+
+
+

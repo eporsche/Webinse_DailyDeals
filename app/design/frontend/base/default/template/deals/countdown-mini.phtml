@@ -1,0 +1,77 @@
+<?php echo $this->getChild('countdown.mini')->toHtml();?>
+<?php if(Mage::helper('dailydeals')->getDealsConfig('deals_category_page/category_page_countdown_select')): ?>
+    <?php
+    $product = $this->getProduct();
+    $helper = Mage::helper('dailydeals');
+    $dealColor = $helper->getDealsConfig('deals_category_page/category_page_countdown_color');
+
+    $toolbar = $this->getLayout()->getBlock('product_list_toolbar');
+    $currentMode = ($toolbar) ? $toolbar->getCurrentMode() : '';
+    ?>
+    <?php if(($product->getDealStatus()) && ($helper->isDealEnabled($product))) : ?>
+        <?php if($currentMode == 'grid'): ?>
+            <?php /*echo $this->getChildHtml('child') */ ?>
+            <div id="deals-countdown-mini-grid" class="deals-countdown-mini-grid">
+                <script type="text/javascript">
+                    var CountdownImageFolder = "<?php echo $this->getSkinUrl('images/deals/images/')?>";
+                    var myCountdown1 = new Countdown({
+                        time: <?php echo strtotime($product->getDealEndTime()) - strtotime($helper->getCurrentTime());?>, // 86400 seconds = 1 day
+                        second: 0,
+                        width: <?php echo $helper->getDealsConfig('deals_category_page/width_category_page_grid') ?>,
+                        height: <?php echo $helper->getDealsConfig('deals_category_page/height_category_page_grid') ?>,
+                        rangeHi: "day",
+                        numbers: {
+                            font: "Arial",
+                            color: "",
+                            bkgd: "<?php echo $dealColor ?>",
+                            rounded: 0.25
+                        },
+                        hideLine: <?php echo $helper->getDealsConfig('deals_category_page/hide_line_on_countdown_category_page'); ?>,
+                        style: "boring",
+                        labelText	: {
+                            ms    	: "MS",
+                            second : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_seconds').'"' ?>,
+                            minute : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_minutes').'"' ?>,
+                            hour  	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_hours').'"' ?>,
+                            day   	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_days').'"' ?>,
+                            month  : "MONTHS",
+                            year  	: "YEARS"	// <- no comma on last item!
+                        }// <- no comma on last item!
+                    });
+                </script>
+            </div>
+        <?php elseif($currentMode == 'list'): ?>
+            <div id="deals-countdown-mini-list" class="deals-countdown-mini-list">
+                <script type="text/javascript">
+                    //var heightParent = document.getElementById('deals-countdown-mini-list').offsetHeight;
+                    //(document.body.clientWidth <= 600) ? widthParent = 200 :  widthParent = document.getElementById('deals-countdown-mini-list').offsetWidth;
+                    var CountdownImageFolder = "<?php echo $this->getSkinUrl('images/deals/images/')?>";
+                    var myCountdown1 = new Countdown({
+                        time: <?php echo strtotime($product->getDealEndTime()) - strtotime($helper->getCurrentTime());?>, // 86400 seconds = 1 day
+                        second: 0,
+                        width: <?php echo $helper->getDealsConfig('deals_category_page/width_category_page_list') ?>,
+                        height: <?php echo $helper->getDealsConfig('deals_category_page/height_category_page_list') ?>,
+                        rangeHi: "day",
+                        numbers: {
+                            font: "Arial",
+                            color: "",
+                            bkgd: "<?php echo $dealColor ?>",
+                            rounded: 0.25
+                        },
+                        hideLine: <?php echo $helper->getDealsConfig('deals_category_page/hide_line_on_countdown_category_page'); ?>,
+                        style: "boring",
+                        labelText	: {
+                            ms    	: "MS",
+                            second : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_seconds').'"' ?>,
+                            minute : <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_minutes').'"' ?>,
+                            hour  	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_hours').'"' ?>,
+                            day   	: <?php echo '"'.$helper->getDealsConfig('dailydeals_group/general_days').'"' ?>,
+                            month  : "MONTHS",
+                            year  	: "YEARS"	// <- no comma on last item!
+                        }// <- no comma on last item!// <- no comma on last item!
+                    });
+                </script>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

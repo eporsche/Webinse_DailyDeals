@@ -1,0 +1,81 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: pavel
+ * Date: 3/16/15
+ * Time: 10:20 AM
+ */
+//header('Content-Type: application/soap+xml; charset = utf-8');
+
+try {
+    $options = array(
+        'soap_version' =>SOAP_1_2,
+        'exceptions' => true,
+        'trace' => 1,
+        'cache_wdsl' =>WDSL_CACHE_NONE,
+    );
+    $client = new SoapClient("http://apiv7.sellvia.nl/service.asmx?wsdl", $options);
+    $result = $client->Collectie(array('Security' => 'A533EA13-3276-43A9-930D-382A51186164'));
+} catch (Exception $e) {
+    echo "<h2>Exceptoin Error!</h2>";
+    echo $e->getMessage();
+}
+
+
+$arrayProducts = $result->CollectieResult->Edities;
+$magazines = array();
+//var_dump($arrayProducts);
+foreach($arrayProducts as $products) {
+
+    foreach($products as $value) {
+        $magazines[] = $value;
+    }
+}
+//var_dump($magazines);
+foreach($magazines as $atr){
+//    echo $atr->EditieID;
+//    echo $atr->MagazineID;
+    echo $attr->Rubrieken;
+//    var_dump($atr);
+    break;
+//    foreach($atr as $key=>$value) {
+//        echo "$key => ";
+//        if (is_object($value)) {
+//            foreach($value as $v) {
+//                foreach($v as $images){
+//                    echo "$images";
+//                    echo '</br>';
+//                }
+//            }
+//        }
+//       else {
+//            echo trim($value);
+//            echo '</br>';
+//        }
+//    }
+//    echo '</br>';
+//    echo '</br>';
+}
+
+
+
+
+
+//try {
+//    $fp = fopen('Soap/Collectie.csv', 'w');
+//} catch (Exception $e) {
+//    echo 'File did not create.';
+//}
+////var_dump($magazines);
+//$fp = fopen('Soap/Collectie.csv', 'w');
+//foreach($magazines as $atr){
+//        fputcsv($fp, $atr );
+//}
+//
+//
+//
+//
+//
+//fclose($fp);
+//echo 'File created.'
+?>

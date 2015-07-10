@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <webinse translate="label">
+            <label><![CDATA[<div><img style="height: 15px;vertical-align: top;margin-right: 10px;" id="webinse_block" src="" alt="Webinse" border="0" />Webinse</div><script>
+            var n = SKIN_URL.indexOf("adminhtml");
+            $('webinse_block').src = SKIN_URL.substring(0, n) + "adminhtml/base/default/deals/images/webinse.png"</script>]]></label>
+            <sort_order>100</sort_order>
+        </webinse>
+    </tabs>
+    <sections>
+        <dailydeals translate="label" module="dailydeals">
+            <label>Daily Deals</label>
+            <tab>webinse</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <!--GENERAL-->
+                <dailydeals_group translate="label" module="dailydeals">
+                    <label>General Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_deals_link  translate="label">
+                            <label>Show 'Deals' Link in the Header: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                        </show_deals_link>
+                        <label_deals_link translate="label">
+                            <label> Label for link:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 'Deals'</comment>
+                        </label_deals_link>
+                        <!---->
+                        <show_deals_information  translate="label">
+                            <label>Show Deals Information Block on Product Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                        </show_deals_information>
+                        <!--show block-->
+                        <show_save_label  translate="label">
+                            <label>Show Save Label Block on Product Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </show_save_label>
+                        <show_items_bought_label  translate="label">
+                            <label>Show Items Bought Label Block on Product Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </show_items_bought_label>
+                        <show_items_left_label  translate="label">
+                            <label>Show Items Left Label Block on Product Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </show_items_left_label>
+                        <!--end-->
+                        <save_label translate="label">
+                            <label> Label for 'You Save':</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 'You Save'</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </save_label>
+                        <items_bought_label translate="label">
+                            <label>Label for 'Items Bought':</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 'Items Bought'</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </items_bought_label>
+                        <items_Left_label translate="label">
+                            <label> Label for 'Items Left':</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 'Items Left'</comment>
+                            <depends><show_deals_information>1</show_deals_information></depends>
+                        </items_Left_label>
+                        <you_save translate="label">
+                            <label>"You save" in: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>Webinse_DailyDeals_Model_System_Config_Source_SaveInOptions</source_model>
+                        </you_save>
+                        <general_seconds translate="label">
+                            <label>Label for Seconds:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: SECONDS</comment>
+                        </general_seconds>
+                        <general_minutes translate="label">
+                            <label>Label for Minutes:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: MINUTES</comment>
+                        </general_minutes>
+                        <general_hours translate="label">
+                            <label>Label for Hours:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: HOURS</comment>
+                        </general_hours>
+                        <general_days translate="label">
+                            <label>Label for DAYS:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: DAYS</comment>
+                        </general_days>
+                        <!--layout-->
+                        <layout translate="label">
+                            <label>Page Layout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Webinse_DailyDeals_Model_System_Config_Source_Layouts</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 3 columns</comment>
+                        </layout>
+                    </fields>
+                </dailydeals_group>
+                <!---->
+                <!--WIDGET-->
+
+                <deals_widget>
+                    <label>Widget Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <widget_countdown_color translate="label">
+                            <label>Countdown color:</label>
+                            <validate>color</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 2E8AB8</comment>
+                        </widget_countdown_color>
+                        <width_widget translate="label">
+                            <label>Countdown width:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown width in pixels. Default: 180</comment>
+                        </width_widget>
+                        <height_widget translate="label">
+                            <label>Countdown height:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown height in pixels. Default: 40</comment>
+                        </height_widget>
+                        <hide_line_on_countdown_widget translate="label">
+                            <label>Hide Line On Countdown: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                        </hide_line_on_countdown_widget>
+                    </fields>
+                </deals_widget>
+
+                <!---->
+                <!--Countdown Product Page-->
+                <deals_product_page>
+                    <label>Countdown on Product Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <product_page_countdown_select translate="label">
+                            <label>Show Countdown On Products:</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </product_page_countdown_select>
+                        <product_page_countdown_color translate="label">
+                            <label>Countdown color:</label>
+                            <validate>color</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 333</comment>
+                        </product_page_countdown_color>
+                        <width_product_page_countdown translate="label">
+                            <label>Countdown width:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown width in pixels. Default: 300</comment>
+                        </width_product_page_countdown>
+                        <height_product_page_countdown translate="label">
+                            <label>Countdown height:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown height in pixels. Default: 50</comment>
+                        </height_product_page_countdown>
+                        <product_page_countdown_label_color translate="label">
+                            <label>Label Color:</label>
+                            <validate>color</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 333</comment>
+                        </product_page_countdown_label_color>
+                        <hide_line_on_countdown_product_page_countdown translate="label">
+                            <label>Hide Line On Countdown: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                        </hide_line_on_countdown_product_page_countdown>
+                    </fields>
+                </deals_product_page>
+                <!---->
+                <!--Deals Category Page-->
+                <deals_category_page>
+                    <label>Countdown on Category Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <category_page_countdown_select translate="label">
+                            <label>Show Countdown for Category Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </category_page_countdown_select>
+                        <show_on_search translate="label">
+                            <label>Show Countdown on Search Page: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_on_search>
+                        <category_page_countdown_color translate="label">
+                            <label>Countdown color:</label>
+                            <validate>color</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: 2E8AB8</comment>
+                        </category_page_countdown_color>
+                        <width_category_page_grid translate="label">
+                            <label>Countdown width on Category page with 'grid' mode:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown width in pixels. Default: 180</comment>
+                        </width_category_page_grid>
+                        <height_category_page_grid translate="label">
+                            <label>Countdown height on Category page with 'grid' mode:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown height in pixels. Default: 30</comment>
+                        </height_category_page_grid>
+                        <width_category_page_list translate="label">
+                            <label>Countdown width on Category page with 'list' mode:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown width in pixels. Default: 120</comment>
+                        </width_category_page_list>
+                        <height_category_page_list translate="label">
+                            <label>Countdown height on Category page with 'list' mode:</label>
+                            <validate>validate-number required-entry</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Countdown height in pixels. Default: 40</comment>
+                        </height_category_page_list>
+                        <hide_line_on_countdown_category_page translate="label">
+                            <label>Hide Line On Countdown: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>Default: Yes</comment>
+                        </hide_line_on_countdown_category_page>
+                    </fields>
+                </deals_category_page>
+                <!---->
+
+            </groups>
+        </dailydeals>
+        <website>
+            <label><![CDATA[<a id="webinse_link" title="Webinse" target="_blank" href="http://www.webinse.com/"><span>Visit Website</span></a><script>document.getElementById('webinse_link').previousElementSibling.remove()</script>]]></label>
+            <tab>webinse</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+        </website>
+    </sections>
+</config>

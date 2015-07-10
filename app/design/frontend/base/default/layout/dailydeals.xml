@@ -1,0 +1,72 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <reference name="top.links">
+                <block type="dailydeals/links" name="dailydeals_links">
+                    <action method="addDealLink" translate="label title" ifconfig="dailydeals/dailydeals_group/show_deals_link">
+                        <blockName>dailydeals_links</blockName>
+                    </action>
+                </block>
+            </reference>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>deals/js/countdown/countdown.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>deals/css/style.css</name>
+            </action>
+        </reference>
+    </default>
+    <dailydeals_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/3columns.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="dailydeals/product_list" name="product_list" template="catalog/product/list.phtml">
+                <block type="core/text_list" name="product_list.name.after" as="name.after"/>
+                <block type="core/text_list" name="product_list.after" as="after"/>
+                <block type="catalog/product_list_toolbar" name="product_list_toolbar"
+                       template="catalog/product/list/toolbar.phtml">
+                    <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="addColumnCountLayoutDepend">
+                    <layout>empty</layout>
+                    <count>6</count>
+                </action>
+                <action method="addColumnCountLayoutDepend">
+                    <layout>one_column</layout>
+                    <count>5</count>
+                </action>
+                <action method="addColumnCountLayoutDepend">
+                    <layout>two_columns_left</layout>
+                    <count>4</count>
+                </action>
+                <action method="addColumnCountLayoutDepend">
+                    <layout>two_columns_right</layout>
+                    <count>4</count>
+                </action>
+                <action method="addColumnCountLayoutDepend">
+                    <layout>three_columns</layout>
+                    <count>3</count>
+                </action>
+                <action method="setToolbarBlockName">
+                    <name>product_list_toolbar</name>
+                </action>
+                <!-- Since the addColumnCountLayoutDepend does not work, we are manually setting the max columns -->
+                <action method="setColumnCount">
+                    <count>4</count>
+                </action>
+            </block>
+        </reference>
+    </dailydeals_index_index>
+    <catalog_product_view>
+        <reference name="product.info.extrahint">
+            <block type="dailydeals/product_list" as="moduleAs" template="deals/countdown.phtml"/>
+        </reference>
+    </catalog_product_view>
+</layout>

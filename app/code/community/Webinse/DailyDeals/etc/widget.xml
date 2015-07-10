@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<widgets>
+    <dailydeals_countdown type="dailydeals/widget">
+        <name>Dailydeals: Side block</name>
+        <description type="desc">Add daily deals side block widget</description>
+        <parameters>
+            <numbers_item translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Numbers items</label>
+                <type>text</type>
+                <source_model>dailydeals/services</source_model>
+            </numbers_item>
+            <border_size translate="label">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Border px</label>
+                <type>text</type>
+                <source_model>dailydeals/services</source_model>
+            </border_size>
+            <border_style translate="label">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Border style</label>
+                <type>select</type>
+                <source_model>dailydeals/services</source_model>
+            </border_style>
+            <border_color translate="label">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Border color</label>
+                <type>text</type>
+                <source_model>dailydeals/services</source_model>
+            </border_color>
+        </parameters>
+    </dailydeals_countdown>
+</widgets>

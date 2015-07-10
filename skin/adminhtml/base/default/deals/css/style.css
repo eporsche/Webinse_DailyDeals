@@ -1,0 +1,18 @@
+.font-bold {
+    font-weight: bold;
+}
+.ended {
+    background-color: #FFCC66;
+}
+.disabled_deal {
+    background-color: #CCCCCC;
+}
+.pending {
+    background-color: #66CCFF;
+}
+.running {
+    background-color: #66FFCC;
+}
+.automatically{
+    background-color: #EEAEEE;
+}

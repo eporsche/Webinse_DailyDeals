@@ -1,0 +1,4 @@
+.fieldset-wide .form-list td.value input.input-text,
+.fieldset-wide .form-list td.value textarea {
+    width: 274px !important;
+}

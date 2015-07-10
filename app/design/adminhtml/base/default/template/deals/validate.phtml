@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	Validation.add('validate-date', 'Please enter a valid date.', function (v) {
+		var locale = "<?php echo Mage::app()->getLocale()->getLocaleCode() ?>";
+		var test = moment(v, 'L', locale);
+
+		return Validation.get('IsEmpty').test(v) || !isNaN(test) || test.isValid();
+	});
+
+	Validation.add('validate-date-range', 'The From Date value should be less than or equal to the To Date value.', function (v, elm) {
+		var locale = "<?php echo Mage::app()->getLocale()->getLocaleCode() ?>";
+		if (elm.name.indexOf('start') > -1) {
+			return true;
+		}
+
+		var inputs = document.getElementsByClassName('validate-date-range');
+
+		var start = moment(inputs[0].value, 'L', locale);
+		var end = moment(inputs[1].value, 'L', locale);
+
+		return ((start.unix() == end.unix()) || (end.isAfter(start)));
+
+	});
+</script>
